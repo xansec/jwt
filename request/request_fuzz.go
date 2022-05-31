@@ -32,8 +32,8 @@ func FuzzRequest(data []byte) int {
 	requestFuzzData.valid = true
 
 	// load keys from disk
-	privateKey := test.LoadRSAPrivateKeyFromDisk("../test/sample_key")
-	publicKey := test.LoadRSAPublicKeyFromDisk("../test/sample_key.pub")
+	privateKey := test.LoadRSAPrivateKeyFromDisk("/jwt/test/sample_key")
+	publicKey := test.LoadRSAPublicKeyFromDisk("/jwt/test/sample_key.pub")
 	keyfunc := func(*jwt.Token) (interface{}, error) {
 		return publicKey, nil
 	}
