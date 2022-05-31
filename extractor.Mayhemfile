@@ -1,0 +1,5 @@
+project: golang-jwt
+target: extractor 
+
+cmds:
+  - cmd: /extractor_fuzz

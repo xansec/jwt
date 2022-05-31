@@ -1,0 +1,5 @@
+project: golang-jwt
+target: request
+
+cmds:
+  - cmd: /request_fuzz
