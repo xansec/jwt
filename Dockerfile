@@ -19,5 +19,8 @@ RUN clang -fsanitize=fuzzer,address extractor_fuzz.a -o extractor_fuzz.libfuzzer
 RUN clang -fsanitize=fuzzer,address request_fuzz.a -o request_fuzz.libfuzzer
 
 FROM ubuntu
-COPY --from=builder /go/jwt/request/request_fuzz.libfuzzer /request_fuzz
-COPY --from=builder /go/jwt/request/extractor_fuzz.libfuzzer /extractor_fuzz
+RUN mkdir /jwt
+RUN mkdir /jwt/fuzz
+COPY --from=builder /go/jwt/request/request_fuzz.libfuzzer /jwt/fuzz/request_fuzz
+COPY --from=builder /go/jwt/request/extractor_fuzz.libfuzzer /jwt/fuzz/extractor_fuzz
+COPY --from=builder /go/jwt/test /jwt/test
