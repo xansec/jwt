@@ -2,4 +2,4 @@ project: golang-jwt
 target: extractor 
 
 cmds:
-  - cmd: /extractor_fuzz
+  - cmd: /jwt/fuzz/extractor_fuzz

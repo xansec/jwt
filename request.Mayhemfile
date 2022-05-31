@@ -2,4 +2,4 @@ project: golang-jwt
 target: request
 
 cmds:
-  - cmd: /request_fuzz
+  - cmd: /jwt/fuzz/request_fuzz
