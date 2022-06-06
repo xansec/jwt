@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"net/url"
-	"reflect"
+	//"reflect"
 	"strings"
 	"github.com/golang-jwt/jwt/v4"
 	"github.com/golang-jwt/jwt/v4/test"
@@ -60,23 +60,25 @@ func FuzzRequest(data []byte) int {
 			r.Header.Set(k, tokenString)
 		}
 	}
-	token, err := ParseFromRequestWithClaims(r, requestFuzzData.extractor, jwt.MapClaims{}, keyfunc)
-
+	//token, err := ParseFromRequestWithClaims(r, requestFuzzData.extractor, jwt.MapClaims{}, keyfunc)
+	ParseFromRequestWithClaims(r, requestFuzzData.extractor, jwt.MapClaims{}, keyfunc)
+/***
 	if token == nil {
 		error := fmt.Sprint("[%v] Token was not found: %v", requestFuzzData.name, err)
-		//panic(error)
+		println(error)
 	}
 	if !reflect.DeepEqual(requestFuzzData.claims, token.Claims) {
 		error := fmt.Sprint("[%v] Claims mismatch. Expecting: %v  Got: %v", requestFuzzData.name, requestFuzzData.claims, token.Claims)
-		//panic(error)
+		println(error)
 	}
 	if requestFuzzData.valid && err != nil {
 		error := fmt.Sprint("[%v] Error while verifying token: %v", requestFuzzData.name, err)
-		//panic(error)
+		println(error)
 	}
 	if !requestFuzzData.valid && err == nil {
 		error := fmt.Sprint("[%v] Invalid token passed validation", requestFuzzData.name)
-		//panic(error)
+		println(error)
 	}
+***/
 	return 1
 }
